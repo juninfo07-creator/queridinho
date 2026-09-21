@@ -1,0 +1,488 @@
+/* ==========================================================================
+   CAPPUCCINO QUERIDINHO — Design tokens
+   ========================================================================== */
+:root {
+  /* Cores — base creme/artesanal */
+  --color-cream-100: #FBF6EC;
+  --color-cream-200: #F6EDDC;
+  --color-cream-300: #F0E4CC;
+  --color-cream-400: #E7D6B4;
+
+  /* Marrons — contraste e texto */
+  --color-brown-900: #2B1B12;
+  --color-brown-800: #3B2416;
+  --color-brown-700: #5A3822;
+  --color-brown-600: #96643A;
+  --color-brown-500: #9C6A3E;
+
+  --color-white: #FFFFFF;
+  --color-text: var(--color-brown-900);
+  --color-text-muted: #7C6C5D;
+
+  --color-whatsapp: #25D366;
+
+  /* Tipografia */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-script: "Kaushan Script", cursive;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Espaçamento */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 5rem;
+  --space-16: 7rem;
+
+  /* Layout */
+  --container-max: 1440px;
+  --container-pad: clamp(1.25rem, 4vw, 3rem);
+
+  /* Raios */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.75rem;
+  --radius-xl: 2.5rem;
+  --radius-pill: 999px;
+
+  /* Sombra */
+  --shadow-soft: 0 20px 40px -20px rgba(43, 27, 18, 0.25);
+  --shadow-card: 0 12px 30px -14px rgba(43, 27, 18, 0.2);
+
+  /* Transições */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-cream-100);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font: inherit; background: none; border: none; cursor: pointer; }
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ==========================================================================
+   Botões
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-pill);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background-color 0.25s var(--ease);
+}
+
+.btn .icon-whatsapp {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.btn--primary,
+.btn--cta {
+  background: var(--color-brown-800);
+  color: var(--color-cream-100);
+  box-shadow: var(--shadow-card);
+}
+
+.btn--primary:hover,
+.btn--cta:hover {
+  background: var(--color-brown-900);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -14px rgba(43, 27, 18, 0.45);
+}
+
+.btn--primary:active,
+.btn--cta:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-cream-100);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 12px 24px -18px rgba(43, 27, 18, 0.3);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-block: 1.1rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.logo__main {
+  font-family: var(--font-script);
+  font-size: 2.15rem;
+  color: var(--color-brown-800);
+}
+
+.logo__sub {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-brown-600);
+  margin-top: 0.1rem;
+  margin-left: 0.15rem;
+}
+
+/* Navegação */
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav__link {
+  position: relative;
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--color-brown-700);
+  padding-block: 0.35rem;
+  transition: color 0.2s var(--ease);
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.3rem;
+  height: 2px;
+  background: var(--color-brown-800);
+  border-radius: var(--radius-pill);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
+}
+
+.nav__link:hover {
+  color: var(--color-brown-900);
+}
+
+.nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav__link.is-active {
+  color: var(--color-brown-900);
+}
+
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Botão hamburguer (mobile) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-brown-800);
+  border-radius: var(--radius-pill);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(24rem, 35vw, 31rem);
+  padding-block: clamp(1.25rem, 2.5vw, 1.75rem) clamp(2.5rem, 4.5vw, 3.75rem);
+  overflow: hidden;
+
+  /* Distância do início do texto até a borda esquerda do viewport —
+     usada para alinhar a fotografia sem depender de porcentagens soltas. */
+  --hero-text-edge: max(0px, (100vw - var(--container-max)) / 2) + var(--container-pad);
+  --hero-text-width: 36rem;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero__content {
+  position: relative;
+  max-width: var(--hero-text-width);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brown-600);
+  margin-bottom: var(--space-4);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.65rem, 5vw, 4rem);
+  line-height: 1.04;
+  color: var(--color-brown-900);
+  letter-spacing: -0.02em;
+}
+
+.hero__title-accent {
+  display: block;
+  color: var(--color-brown-600);
+  font-weight: 700;
+}
+
+.hero__description {
+  margin-top: var(--space-5);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 27rem;
+}
+
+.hero__content .btn--primary {
+  margin-top: var(--space-5);
+}
+
+/* ==========================================================================
+   Composição visual do hero — fotografia integrada ao fundo
+   ========================================================================== */
+
+/* A fotografia começa logo depois do texto e vai até a borda direita do
+   viewport, sem moldura, borda ou sombra de "card". A posição inicial é
+   calculada a partir do próprio limite do texto (não uma % solta), então
+   nunca colide com o conteúdo em nenhuma largura de tela. A transição é
+   um degradê longo e suave — não uma linha reta separando as áreas. */
+.hero__photo {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: calc(var(--hero-text-edge) + var(--hero-text-width) - 4.5rem);
+
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 28%, black 62%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 28%, black 62%);
+}
+
+.hero__photo picture {
+  display: contents;
+}
+
+.hero__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 52%;
+}
+
+/* Onda cor de creme que fecha a base do Hero, unindo texto e fotografia
+   numa única composição — igual à transição do mockup de referência. */
+.hero__wave {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  width: 100%;
+  height: clamp(2.25rem, 5vw, 3.75rem);
+  display: block;
+}
+
+.hero__wave-path {
+  fill: var(--color-cream-100);
+}
+
+/* ==========================================================================
+   Responsivo — Tablet
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+  }
+
+  .hero__content {
+    max-width: 38rem;
+  }
+
+  /* A foto volta ao fluxo normal, abaixo do conteúdo, inteira e sem corte */
+  .hero__photo {
+    position: static;
+    order: 2;
+    width: min(32rem, 100%);
+    height: auto;
+    margin: var(--space-8) auto 0;
+
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero__photo img {
+    height: auto;
+    object-fit: contain;
+    border-radius: 1.75rem;
+  }
+
+  .hero__inner {
+    order: 1;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    top: 0;
+    background: var(--color-cream-100);
+    padding: 6.5rem var(--container-pad) 2.5rem;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.35s var(--ease), opacity 0.3s var(--ease);
+    z-index: 90;
+  }
+
+  .nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  .nav__link {
+    font-size: 1.1rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .header__cta {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Responsivo — Mobile
+   ========================================================================== */
+@media (max-width: 640px) {
+  .header__inner {
+    padding-block: 0.85rem;
+  }
+
+  .logo__main {
+    font-size: 1.65rem;
+  }
+
+  .hero {
+    padding-block: 1.5rem 2.5rem;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__title {
+    font-size: clamp(2.3rem, 9.5vw, 2.75rem);
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .hero__content .btn--primary {
+    width: auto;
+    display: inline-flex;
+  }
+
+  .hero__photo {
+    width: min(20rem, 92%);
+    margin-top: var(--space-6);
+  }
+}
