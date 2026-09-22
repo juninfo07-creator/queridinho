@@ -486,3 +486,419 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
     margin-top: var(--space-6);
   }
 }
+
+/* ==========================================================================
+   Produtos
+   ========================================================================== */
+.products {
+  padding-block: clamp(3.5rem, 6vw, 6.5rem);
+}
+
+.products__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-8);
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.products__heading {
+  max-width: 24rem;
+}
+
+.products__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+  line-height: 1.1;
+  color: var(--color-brown-900);
+  letter-spacing: -0.01em;
+}
+
+.products__title-accent {
+  display: block;
+}
+
+.products__intro {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  max-width: 29rem;
+  padding-bottom: 0.2rem;
+}
+
+.products__description {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+.products__note {
+  flex-shrink: 0;
+  font-family: var(--font-script);
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--color-brown-600);
+  transform: rotate(-4deg);
+  padding-top: 0.3rem;
+  white-space: nowrap;
+}
+
+/* Grade de cards */
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border: 1px solid rgba(43, 27, 18, 0.07);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 30px -24px rgba(43, 27, 18, 0.3);
+  overflow: hidden;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px -20px rgba(43, 27, 18, 0.3);
+}
+
+.product-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3.3;
+  background: var(--color-cream-300);
+  overflow: hidden;
+}
+
+/* Marca d'água discreta enquanto a foto real do produto não é adicionada.
+   Some automaticamente atrás da imagem assim que o arquivo existir. */
+.product-card__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/favicon.png') center / 2.5rem auto no-repeat;
+  opacity: 0.12;
+}
+
+.product-card__media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.product-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--color-brown-900);
+}
+
+.product-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  min-height: 2.8em;
+}
+
+.product-card__btn {
+  margin-top: 0.4rem;
+}
+
+.product-card__arrow {
+  transition: transform 0.25s var(--ease);
+}
+
+.product-card__btn:hover .product-card__arrow {
+  transform: translateX(3px);
+}
+
+/* Botão em escala menor, mesma linguagem visual do botão principal */
+.btn--sm {
+  padding: 0.6rem 1.15rem;
+  font-size: 0.82rem;
+  gap: 0.4rem;
+}
+
+/* ==========================================================================
+   Revelação suave ao rolar (usada pela seção de Produtos e futuras seções)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.products__grid .product-card:nth-child(1) { transition-delay: 0.05s; }
+.products__grid .product-card:nth-child(2) { transition-delay: 0.12s; }
+.products__grid .product-card:nth-child(3) { transition-delay: 0.19s; }
+.products__grid .product-card:nth-child(4) { transition-delay: 0.26s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Produtos — Responsivo
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .products__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .products__intro {
+    max-width: 100%;
+  }
+
+  .products__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .products {
+    padding-block: 3rem 3.5rem;
+  }
+
+  .products__title {
+    font-size: clamp(2rem, 8vw, 2.4rem);
+  }
+
+  .products__intro {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Mantém o botão do card compacto — a regra global do CTA do Hero
+     (mesma especificidade) o deixaria em largura total no mobile */
+  .product-card__btn {
+    width: auto;
+    padding: 0.6rem 1.15rem;
+  }
+
+  .products__note {
+    transform: rotate(-2deg);
+    padding-top: 0;
+  }
+
+  .products__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card__media {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ==========================================================================
+   Sobre nós
+   ========================================================================== */
+.about {
+  --about-gold: color-mix(in srgb, var(--color-brown-600) 55%, var(--color-cream-200) 45%);
+
+  display: flex;
+  align-items: stretch;
+  background: var(--color-brown-900);
+  color: var(--color-cream-100);
+  overflow: hidden;
+}
+
+.about__photo {
+  flex: 0 0 45%;
+  max-width: 45%;
+  min-height: clamp(22rem, 34vw, 29rem);
+  position: relative;
+  background: var(--color-brown-700);
+  overflow: hidden;
+}
+
+/* Marca d'água discreta enquanto a foto de preparo não é adicionada */
+.about__photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/favicon.png') center / 4rem auto no-repeat;
+  opacity: 0.16;
+}
+
+.about__photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 18% 42%;
+  display: block;
+}
+
+.about__content-wrap {
+  flex: 1 1 55%;
+  display: flex;
+  align-items: center;
+  padding: clamp(2.5rem, 5vw, 4rem) var(--container-pad) clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4.5rem);
+}
+
+.about__content {
+  max-width: 34rem;
+}
+
+.about .eyebrow {
+  color: var(--about-gold);
+}
+
+.about__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+  line-height: 1.12;
+  color: var(--color-cream-100);
+  letter-spacing: -0.01em;
+}
+
+.about__title-accent {
+  display: block;
+  color: var(--about-gold);
+  font-weight: 700;
+}
+
+.about__text {
+  margin-top: var(--space-5);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-cream-200);
+  max-width: 30rem;
+}
+
+.about__details {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+}
+
+.about__highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(9rem, 1fr));
+  gap: var(--space-5) var(--space-6);
+}
+
+.highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.highlight__icon {
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-top: 0.1rem;
+  color: var(--about-gold);
+}
+
+.highlight span {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--color-cream-200);
+}
+
+.about__note {
+  flex-shrink: 0;
+  font-family: var(--font-script);
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--about-gold);
+  transform: rotate(-3deg);
+  padding-top: 0.2rem;
+}
+
+/* ==========================================================================
+   Sobre nós — Responsivo
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .about__photo {
+    flex-basis: 42%;
+    max-width: 42%;
+  }
+
+  .about__content-wrap {
+    flex-basis: 58%;
+    padding-left: clamp(1.75rem, 4vw, 3rem);
+  }
+
+  .about__details {
+    gap: var(--space-6);
+  }
+}
+
+/* A divisão em duas colunas se mantém por todo o tablet — só empilha
+   verticalmente na faixa mobile, junto com o restante do site. */
+@media (max-width: 640px) {
+  .about {
+    flex-direction: column;
+  }
+
+  .about__photo {
+    flex-basis: auto;
+    max-width: 100%;
+    width: 100%;
+    min-height: 16rem;
+    height: 16rem;
+  }
+
+  .about__content-wrap {
+    padding: clamp(2.5rem, 6vw, 3.5rem) var(--container-pad);
+  }
+
+  .about__content {
+    max-width: 100%;
+  }
+
+  .about__title {
+    font-size: clamp(2rem, 8vw, 2.4rem);
+  }
+
+  .about__details {
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-top: var(--space-8);
+  }
+
+  .about__highlights {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    width: 100%;
+  }
+
+  /* Nota manuscrita fica só no desktop/tablet — no mobile ela ficava
+     desalinhada abaixo da grade de destaques */
+  .about__note {
+    display: none;
+  }
+}
