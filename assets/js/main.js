@@ -18,7 +18,7 @@ if (navToggle && nav) {
 }
 
 // Fallback visual para fotos ainda não adicionadas ao projeto
-document.querySelectorAll('.product-card__media img, .about__photo img').forEach((img) => {
+document.querySelectorAll('.product-card__media img, .about__photo img, .testimonials__photo img, .instagram__item img').forEach((img) => {
   img.addEventListener('error', () => {
     img.style.display = 'none';
   }, { once: true });
