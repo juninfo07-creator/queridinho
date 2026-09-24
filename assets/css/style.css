@@ -153,26 +153,14 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 /* Logo */
 .logo {
   display: flex;
-  flex-direction: column;
-  line-height: 1;
+  align-items: center;
   flex-shrink: 0;
 }
 
-.logo__main {
-  font-family: var(--font-script);
-  font-size: 2.15rem;
-  color: var(--color-brown-800);
-}
-
-.logo__sub {
-  font-family: var(--font-body);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-brown-600);
-  margin-top: 0.1rem;
-  margin-left: 0.15rem;
+.logo img {
+  display: block;
+  height: 2.5rem;
+  width: auto;
 }
 
 /* Navegação */
@@ -450,8 +438,8 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
     padding-block: 0.85rem;
   }
 
-  .logo__main {
-    font-size: 1.65rem;
+  .logo img {
+    height: 2rem;
   }
 
   .hero {
@@ -460,6 +448,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 
   .hero__content {
     max-width: 100%;
+    text-align: center;
   }
 
   .hero__title {
@@ -468,6 +457,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 
   .hero__description {
     font-size: 1rem;
+    margin-inline: auto;
   }
 
   .btn {
@@ -479,6 +469,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   .hero__content .btn--primary {
     width: auto;
     display: inline-flex;
+    margin-inline: auto;
   }
 
   .hero__photo {
@@ -685,13 +676,29 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
     padding-block: 3rem 3.5rem;
   }
 
+  .products__header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .products__heading {
+    margin-inline: auto;
+  }
+
   .products__title {
     font-size: clamp(2rem, 8vw, 2.4rem);
   }
 
   .products__intro {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: var(--space-2);
+  }
+
+  .product-card__body {
+    align-items: center;
+    text-align: center;
   }
 
   /* Mantém o botão do card compacto — a regra global do CTA do Hero
@@ -876,8 +883,17 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
     padding: clamp(2.5rem, 6vw, 3.5rem) var(--container-pad);
   }
 
+  .about__content-wrap {
+    justify-content: center;
+  }
+
   .about__content {
     max-width: 100%;
+  }
+
+  .about .eyebrow,
+  .about__title {
+    text-align: center;
   }
 
   .about__title {
@@ -892,6 +908,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 
   .about__highlights {
     grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     gap: var(--space-4);
     width: 100%;
   }
@@ -1110,15 +1127,19 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 }
 
 @media (max-width: 640px) {
+  .testimonials__header {
+    align-items: center;
+    text-align: center;
+  }
+
   .testimonials__title {
     font-size: clamp(2rem, 8vw, 2.4rem);
   }
 
-  /* Mantém o link discreto — a regra global do CTA do Hero (mesma
-     especificidade) o deixaria em largura total e centralizado */
   .testimonials__cta {
     width: auto;
-    justify-content: flex-start;
+    justify-content: center;
+    margin-inline: auto;
   }
 
   .testimonials__grid {
@@ -1301,5 +1322,121 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 
   .instagram__content-wrap {
     padding: clamp(2.5rem, 7vw, 3rem) var(--container-pad);
+  }
+}
+
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+.footer__main {
+  padding-block: clamp(3rem, 6vw, 4.5rem) clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: var(--space-8);
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer__tagline {
+  margin-top: var(--space-3);
+  font-family: var(--font-script);
+  font-size: 1.05rem;
+  color: var(--color-brown-600);
+}
+
+.footer__col .eyebrow {
+  margin-bottom: var(--space-4);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer__links a,
+.footer__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  color: var(--color-brown-700);
+}
+
+.footer__links a {
+  transition: color 0.2s var(--ease);
+}
+
+.footer__links a:hover {
+  color: var(--color-brown-900);
+}
+
+.footer__location {
+  color: var(--color-text-muted);
+}
+
+.footer__link-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.footer__bottom {
+  background: var(--color-brown-900);
+}
+
+.footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-block: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--color-cream-300);
+}
+
+.footer__bottom-inner p {
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Responsivo — Rodapé
+   ========================================================================== */
+@media (max-width: 780px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .footer__brand {
+    align-items: center;
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__links a,
+  .footer__location {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer__bottom-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.35rem;
   }
 }
