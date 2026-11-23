@@ -1444,6 +1444,225 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   }
 }
 
+/* ==========================================================================
+   Modal — Sabores / Tabela nutricional
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: rgba(43, 27, 18, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  max-height: min(85vh, 760px);
+  overflow-y: auto;
+  background: var(--color-cream-100);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-6) var(--space-5);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--color-brown-900);
+  background: var(--color-cream-200);
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s var(--ease);
+}
+
+.modal__close:hover {
+  background: var(--color-cream-300);
+}
+
+.modal__close svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.modal__header {
+  padding-right: 2.5rem;
+  margin-bottom: var(--space-5);
+}
+
+.modal__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-brown-900);
+}
+
+.modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Item de sabor (acordeão) */
+.flavor-item {
+  background: var(--color-cream-200);
+  border: 1px solid rgba(43, 27, 18, 0.07);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.flavor-item__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0.75rem var(--space-4);
+  text-align: left;
+}
+
+.flavor-item__thumb {
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  background: var(--color-cream-300);
+}
+
+.flavor-item__name {
+  flex: 1;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-brown-900);
+}
+
+.flavor-item__chevron {
+  color: var(--color-brown-600);
+  transition: transform 0.2s var(--ease);
+}
+
+.flavor-item__toggle[aria-expanded="true"] .flavor-item__chevron {
+  transform: rotate(180deg);
+}
+
+.flavor-item__panel {
+  padding: 0 var(--space-4) var(--space-4);
+}
+
+.flavor-item__ingredients {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.flavor-item__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: var(--space-3);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-brown-800);
+  background: var(--color-cream-400);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.flavor-item__allergens {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+}
+
+/* Tabela nutricional */
+.nutrition-table-wrap {
+  overflow-x: auto;
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+}
+
+.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.nutrition-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-brown-700);
+  padding: 0.6rem 0.75rem 0.4rem;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+  padding: 0.4rem 0.75rem;
+  border-top: 1px solid rgba(43, 27, 18, 0.08);
+  white-space: nowrap;
+}
+
+.nutrition-table thead th {
+  font-weight: 700;
+  color: var(--color-brown-900);
+  background: var(--color-cream-300);
+  white-space: nowrap;
+}
+
+.nutrition-table tbody th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.nutrition-table td {
+  text-align: right;
+}
+
+.nutrition-table__footnote {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 640px) {
+  .modal {
+    padding: var(--space-5) var(--space-4);
+    max-height: 90vh;
+  }
+
+  .modal__title {
+    font-size: 1.25rem;
+  }
+
+  .nutrition-table {
+    font-size: 0.78rem;
+  }
+}
+
 @media (max-width: 640px) {
   .footer__bottom-inner {
     flex-direction: column;
