@@ -1596,6 +1596,10 @@ body.modal-open {
   margin-top: var(--space-3);
 }
 
+.flavor-item__order {
+  margin-top: var(--space-4);
+}
+
 /* Tabela nutricional */
 .nutrition-table-wrap {
   overflow-x: auto;
