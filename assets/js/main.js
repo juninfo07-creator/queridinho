@@ -24,6 +24,46 @@ document.querySelectorAll('.product-card__media img, .about__photo img, .testimo
   }, { once: true });
 });
 
+// Carrossel simples (crossfade) do card de fotos de Lembrancinhas
+document.querySelectorAll('.js-carousel').forEach((carousel) => {
+  const slides = carousel.querySelectorAll('.favors__photo-slide');
+  const dots = carousel.querySelectorAll('.favors__photo-dot');
+  if (slides.length < 2) return;
+
+  let current = 0;
+  let timer = null;
+
+  function goTo(index) {
+    slides[current].classList.remove('is-active');
+    dots[current]?.classList.remove('is-active');
+    current = index;
+    slides[current].classList.add('is-active');
+    dots[current]?.classList.add('is-active');
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    timer = setInterval(next, 4500);
+  }
+
+  function stopAutoplay() {
+    if (timer) clearInterval(timer);
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      goTo(Number(dot.dataset.slide));
+      startAutoplay();
+    });
+  });
+
+  startAutoplay();
+});
+
 // Revelação suave dos elementos ao rolar a página
 const revealEls = document.querySelectorAll('.reveal');
 
