@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Kaushan+Script&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261124">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261124b">
 </head>
 <body>
 
@@ -160,9 +160,9 @@
             <div class="product-card__body">
               <h3 class="product-card__title">Combos</h3>
               <p class="product-card__desc">Mais sabor, mais momentos especiais.</p>
-              <a href="https://wa.me/5561999134312?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20combos%20do%20Cappuccino%20Queridinho%20%E2%98%95" class="btn btn--primary btn--sm product-card__btn" target="_blank" rel="noopener">
+              <button type="button" class="btn btn--primary btn--sm product-card__btn js-product-modal-trigger" data-category="combos">
                 Ver combos <span class="product-card__arrow" aria-hidden="true">→</span>
-              </a>
+              </button>
             </div>
           </article>
 
@@ -423,14 +423,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
       <div class="modal__header">
-        <p class="eyebrow">Nossos sabores</p>
+        <p class="eyebrow" id="product-modal-eyebrow">Nossos sabores</p>
         <h3 class="modal__title" id="product-modal-title"></h3>
       </div>
       <div class="modal__body" id="product-modal-body"></div>
     </div>
   </div>
 
-  <script src="assets/js/products.js?v=20261124"></script>
+  <script src="assets/js/products.js?v=20261124b"></script>
   <script src="assets/js/main.js?v=20261123"></script>
 </body>
 </html>

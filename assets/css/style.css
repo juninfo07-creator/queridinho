@@ -1604,6 +1604,93 @@ body.modal-open {
 
 .flavor-item__order {
   margin-top: var(--space-4);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+}
+
+.flavor-item__order:disabled {
+  background: var(--color-cream-400);
+  color: var(--color-text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Combos */
+.combo-builder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.combo-group__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-brown-800);
+  margin-bottom: var(--space-2);
+}
+
+.combo-group__counter {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.combo-group__flavors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.combo-flavor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0.6rem 0.8rem;
+  background: var(--color-cream-200);
+  border-radius: var(--radius-sm);
+}
+
+.combo-flavor__name {
+  font-size: 0.9rem;
+  color: var(--color-brown-900);
+}
+
+.combo-flavor__stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.combo-flavor__btn {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--color-brown-800);
+  color: var(--color-cream-100);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.combo-flavor__btn:disabled {
+  background: var(--color-cream-400);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.combo-flavor__qty {
+  min-width: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-brown-900);
 }
 
 /* Tabela nutricional */

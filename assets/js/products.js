@@ -181,16 +181,54 @@ const PRODUCT_CATEGORIES = {
   },
 };
 
+// Combos: cada combo tem 1+ grupos, cada grupo exige escolher N unidades
+// dentro de uma categoria de sabores (conforme o cardápio oficial)
+const COMBOS = [
+  {
+    key: 'sou-classico',
+    name: 'Sou clássico',
+    price: 'R$ 66,00',
+    summary: '3 unidades à sua escolha entre os Cappuccinos Clássicos.',
+    groups: [{ category: 'classicos', count: 3, label: 'Escolha 3 Clássicos' }],
+  },
+  {
+    key: 'muito-especial',
+    name: 'Muito especial',
+    price: 'R$ 78,00',
+    summary: '3 unidades à sua escolha entre os Cappuccinos Especiais.',
+    groups: [{ category: 'especiais', count: 3, label: 'Escolha 3 Especiais' }],
+  },
+  {
+    key: 'quero-chocolate',
+    name: 'Quero chocolate',
+    price: 'R$ 66,00',
+    summary: '3 unidades de Chocolate Quente.',
+    groups: [{ category: 'chocolate', count: 3, label: null }],
+  },
+  {
+    key: 'combinado',
+    name: 'Combinado',
+    price: 'R$ 70,00',
+    summary: '2 Clássicos + 1 Especial, à sua escolha.',
+    groups: [
+      { category: 'classicos', count: 2, label: 'Escolha 2 Clássicos' },
+      { category: 'especiais', count: 1, label: 'Escolha 1 Especial' },
+    ],
+  },
+];
+
 (function () {
   const overlay = document.getElementById('product-modal');
   if (!overlay) return;
 
   const modal = overlay.querySelector('.modal');
+  const eyebrowEl = document.getElementById('product-modal-eyebrow');
   const titleEl = document.getElementById('product-modal-title');
   const bodyEl = document.getElementById('product-modal-body');
   const closeBtn = document.getElementById('product-modal-close');
   let lastFocused = null;
   const WHATSAPP_NUMBER = '5561999134312';
+  const WHATSAPP_ICON_SVG = '<svg class="icon-whatsapp" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.898.526 3.671 1.436 5.187L2 22l4.955-1.404A9.945 9.945 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.148a8.14 8.14 0 0 1-4.152-1.14l-.298-.177-2.94.833.838-2.866-.194-.296A8.13 8.13 0 0 1 3.85 12c0-4.501 3.65-8.148 8.15-8.148 4.501 0 8.15 3.647 8.15 8.148 0 4.502-3.649 8.148-8.15 8.148z"/></svg>';
 
   function buildOrderLink(flavor) {
     const text = encodeURIComponent(`Olá! Quero pedir o Cappuccino Queridinho sabor ${flavor.name} ☕`);
@@ -231,7 +269,7 @@ const PRODUCT_CATEGORIES = {
       <p class="nutrition-table__footnote">*Percentual de valores diários fornecidos pela porção. **No alimento pronto para o consumo.</p>
       ${flavor.allergens ? `<p class="flavor-item__allergens"><strong>Alérgicos:</strong> ${flavor.allergens}</p>` : ''}
       <a href="${buildOrderLink(flavor)}" class="btn btn--primary btn--sm flavor-item__order" target="_blank" rel="noopener">
-        <svg class="icon-whatsapp" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.898.526 3.671 1.436 5.187L2 22l4.955-1.404A9.945 9.945 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.148a8.14 8.14 0 0 1-4.152-1.14l-.298-.177-2.94.833.838-2.866-.194-.296A8.13 8.13 0 0 1 3.85 12c0-4.501 3.65-8.148 8.15-8.148 4.501 0 8.15 3.647 8.15 8.148 0 4.502-3.649 8.148-8.15 8.148z"/></svg>
+        ${WHATSAPP_ICON_SVG}
         <span>Pedir no WhatsApp</span>
       </a>
     `;
@@ -254,12 +292,123 @@ const PRODUCT_CATEGORIES = {
     `;
   }
 
-  function openModal(categoryKey) {
-    const category = PRODUCT_CATEGORIES[categoryKey];
-    if (!category) return;
+  // sabor escolhido por combo: { [comboKey]: { [flavorName]: quantidade } }
+  const comboState = {};
 
-    titleEl.textContent = category.title;
-    bodyEl.innerHTML = category.flavors.map(renderFlavorItem).join('');
+  function groupTotal(combo, group) {
+    const picks = comboState[combo.key] || {};
+    const flavors = PRODUCT_CATEGORIES[group.category].flavors;
+    return flavors.reduce((sum, f) => sum + (picks[f.name] || 0), 0);
+  }
+
+  function comboIsComplete(combo) {
+    return combo.groups.every((group) => groupTotal(combo, group) === group.count);
+  }
+
+  function buildComboOrderLink(combo) {
+    const picks = comboState[combo.key] || {};
+    const items = Object.entries(picks)
+      .filter(([, qty]) => qty > 0)
+      .map(([name, qty]) => `${qty}x ${name}`)
+      .join(', ');
+    const text = encodeURIComponent(
+      `Olá! Quero pedir o combo ${combo.name} (${combo.price}): ${items} ☕`
+    );
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  }
+
+  function renderComboGroup(combo, group) {
+    const flavors = PRODUCT_CATEGORIES[group.category].flavors;
+    const picks = comboState[combo.key] || {};
+    const total = groupTotal(combo, group);
+
+    const flavorsHtml = flavors
+      .map((flavor) => {
+        const qty = picks[flavor.name] || 0;
+        const atGroupLimit = total >= group.count;
+        return `
+          <div class="combo-flavor">
+            <span class="combo-flavor__name">${flavor.name}</span>
+            <div class="combo-flavor__stepper">
+              <button type="button" class="combo-flavor__btn" data-combo-action="dec" data-combo="${combo.key}" data-category="${group.category}" data-flavor="${flavor.name}" data-group-count="${group.count}" ${qty === 0 ? 'disabled' : ''} aria-label="Diminuir ${flavor.name}">−</button>
+              <span class="combo-flavor__qty">${qty}</span>
+              <button type="button" class="combo-flavor__btn" data-combo-action="inc" data-combo="${combo.key}" data-category="${group.category}" data-flavor="${flavor.name}" data-group-count="${group.count}" ${atGroupLimit ? 'disabled' : ''} aria-label="Aumentar ${flavor.name}">+</button>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+
+    return `
+      <div class="combo-group">
+        ${group.label ? `<p class="combo-group__label">${group.label} <span class="combo-group__counter">(${total}/${group.count})</span></p>` : ''}
+        <div class="combo-group__flavors">${flavorsHtml}</div>
+      </div>
+    `;
+  }
+
+  function renderComboPanel(combo) {
+    const hasChoice = combo.groups.some((group) => group.label);
+    const complete = comboIsComplete(combo);
+    return `
+      <p class="flavor-item__ingredients">${combo.summary}</p>
+      ${hasChoice ? `<div class="combo-builder">${combo.groups.map((group) => renderComboGroup(combo, group)).join('')}</div>` : ''}
+      <button type="button" class="btn btn--primary btn--sm flavor-item__order js-combo-order" data-combo="${combo.key}" ${complete ? '' : 'disabled'}>
+        ${WHATSAPP_ICON_SVG}
+        <span>${complete ? 'Pedir no WhatsApp' : `Escolha ${combo.groups.reduce((s, g) => s + g.count, 0)} unidades para continuar`}</span>
+      </button>
+    `;
+  }
+
+  function renderComboItem(combo, index) {
+    const panelId = `combo-panel-${index}`;
+    return `
+      <div class="flavor-item">
+        <button type="button" class="flavor-item__toggle" aria-expanded="false" aria-controls="${panelId}">
+          <span class="flavor-item__name">${combo.name}</span>
+          <span class="flavor-item__price">${combo.price}</span>
+          <span class="flavor-item__chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div class="flavor-item__panel" id="${panelId}" hidden data-combo-panel="${combo.key}">
+          ${renderComboPanel(combo)}
+        </div>
+      </div>
+    `;
+  }
+
+  function updateComboPanel(comboKey) {
+    const combo = COMBOS.find((c) => c.key === comboKey);
+    const panel = bodyEl.querySelector(`[data-combo-panel="${comboKey}"]`);
+    if (!combo || !panel) return;
+
+    panel.innerHTML = renderComboPanel(combo);
+  }
+
+  function initCombos() {
+    COMBOS.forEach((combo) => {
+      comboState[combo.key] = {};
+      if (!combo.groups.some((group) => group.label)) {
+        // combo sem escolha (ex.: "Quero chocolate"): já começa completo
+        const flavor = PRODUCT_CATEGORIES[combo.groups[0].category].flavors[0];
+        comboState[combo.key][flavor.name] = combo.groups[0].count;
+      }
+    });
+  }
+
+  function openModal(categoryKey) {
+    if (categoryKey === 'combos') {
+      eyebrowEl.textContent = 'Monte seu combo';
+      titleEl.textContent = 'Combos Cappuccino Queridinho';
+      initCombos();
+      bodyEl.innerHTML = COMBOS.map(renderComboItem).join('');
+    } else {
+      const category = PRODUCT_CATEGORIES[categoryKey];
+      if (!category) return;
+
+      eyebrowEl.textContent = 'Nossos sabores';
+      titleEl.textContent = category.title;
+      bodyEl.innerHTML = category.flavors.map(renderFlavorItem).join('');
+    }
 
     lastFocused = document.activeElement;
     overlay.hidden = false;
@@ -289,12 +438,38 @@ const PRODUCT_CATEGORIES = {
 
   bodyEl.addEventListener('click', (event) => {
     const toggle = event.target.closest('.flavor-item__toggle');
-    if (!toggle) return;
+    if (toggle) {
+      const panel = document.getElementById(toggle.getAttribute('aria-controls'));
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
-    const panel = document.getElementById(toggle.getAttribute('aria-controls'));
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      panel.hidden = isOpen;
+      return;
+    }
 
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    panel.hidden = isOpen;
+    const stepperBtn = event.target.closest('.combo-flavor__btn');
+    if (stepperBtn) {
+      const { combo: comboKey, category, flavor: flavorName, comboAction } = stepperBtn.dataset;
+      const groupCount = Number(stepperBtn.dataset.groupCount);
+      const picks = (comboState[comboKey] = comboState[comboKey] || {});
+      const current = picks[flavorName] || 0;
+      const group = COMBOS.find((c) => c.key === comboKey).groups.find((g) => g.category === category);
+      const total = groupTotal({ key: comboKey }, group);
+
+      if (comboAction === 'inc' && total < groupCount) {
+        picks[flavorName] = current + 1;
+      } else if (comboAction === 'dec' && current > 0) {
+        picks[flavorName] = current - 1;
+      }
+
+      updateComboPanel(comboKey);
+      return;
+    }
+
+    const orderBtn = event.target.closest('.js-combo-order');
+    if (orderBtn && !orderBtn.disabled) {
+      const combo = COMBOS.find((c) => c.key === orderBtn.dataset.combo);
+      window.open(buildComboOrderLink(combo), '_blank', 'noopener');
+    }
   });
 })();
