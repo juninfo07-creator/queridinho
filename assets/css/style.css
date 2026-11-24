@@ -1706,13 +1706,11 @@ body.modal-open {
   font-size: 0.82rem;
 }
 
-.nutrition-table caption {
-  caption-side: top;
-  text-align: left;
+.nutrition-table__caption {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--color-brown-700);
-  padding: 0.6rem 0.75rem 0.4rem;
+  margin-bottom: var(--space-2);
 }
 
 .nutrition-table th,

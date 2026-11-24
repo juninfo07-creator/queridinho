@@ -252,9 +252,9 @@ const COMBOS = [
     return `
       <p class="flavor-item__ingredients"><strong>Ingredientes:</strong> ${flavor.ingredients}</p>
       ${notesHtml}
+      <p class="nutrition-table__caption">${flavor.portionInfo}</p>
       <div class="nutrition-table-wrap">
         <table class="nutrition-table">
-          <caption>${flavor.portionInfo}</caption>
           <thead>
             <tr>
               <th scope="col">Informação nutricional</th>
