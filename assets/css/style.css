@@ -393,7 +393,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1060px) {
   .nav {
     position: fixed;
     inset: 0 0 auto 0;
@@ -919,6 +919,158 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
      desalinhada abaixo da grade de destaques */
   .about__note {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   Lembrancinhas personalizadas
+   ========================================================================== */
+.favors {
+  display: flex;
+  align-items: stretch;
+  background: var(--color-cream-200);
+  overflow: hidden;
+}
+
+.favors__content-wrap {
+  flex: 1 1 55%;
+  display: flex;
+  align-items: center;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem) var(--container-pad);
+}
+
+.favors__content {
+  max-width: 34rem;
+}
+
+.favors__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+  line-height: 1.12;
+  color: var(--color-brown-900);
+  letter-spacing: -0.01em;
+}
+
+.favors__title-accent {
+  display: block;
+  color: var(--color-brown-600);
+}
+
+.favors__text {
+  margin-top: var(--space-5);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 30rem;
+}
+
+.favors__occasions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(9rem, 1fr));
+  gap: var(--space-5) var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.favors-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.favors-item__icon {
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-top: 0.1rem;
+  color: var(--color-brown-600);
+}
+
+.favors-item span {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--color-brown-900);
+}
+
+.favors__cta {
+  margin-top: var(--space-8);
+}
+
+.favors__photo {
+  flex: 0 0 45%;
+  max-width: 45%;
+  min-height: clamp(22rem, 34vw, 29rem);
+  position: relative;
+  background: var(--color-brown-700);
+  overflow: hidden;
+}
+
+.favors__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .favors__content-wrap {
+    flex-basis: 58%;
+    padding-right: clamp(1.75rem, 4vw, 3rem);
+  }
+
+  .favors__photo {
+    flex-basis: 42%;
+    max-width: 42%;
+  }
+}
+
+@media (max-width: 640px) {
+  .favors {
+    flex-direction: column-reverse;
+  }
+
+  .favors__photo {
+    flex-basis: auto;
+    max-width: 100%;
+    width: 100%;
+    min-height: 16rem;
+    height: 16rem;
+  }
+
+  .favors__content-wrap {
+    padding: clamp(2.5rem, 6vw, 3.5rem) var(--container-pad);
+    justify-content: center;
+  }
+
+  .favors__content {
+    max-width: 100%;
+  }
+
+  .favors .eyebrow,
+  .favors__title {
+    text-align: center;
+  }
+
+  .favors__title {
+    font-size: clamp(2rem, 8vw, 2.4rem);
+  }
+
+  .favors__occasions {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .favors-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .favors__cta {
+    width: 100%;
+    justify-content: center;
   }
 }
 
