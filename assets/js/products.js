@@ -5,6 +5,7 @@ const PRODUCT_CATEGORIES = {
     flavors: [
       {
         name: 'Tradicional',
+        price: 'R$ 24,00',
         img: 'assets/img/produto-classicos.png',
         ingredients: 'Leite integral, cacau em pó, amido de milho, espessante carboximetilcelulose sódica, sal, café solúvel, bicarbonato de sódio, canela, açúcar refinado.',
         portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
@@ -27,6 +28,7 @@ const PRODUCT_CATEGORIES = {
       },
       {
         name: 'Ovomaltine',
+        price: 'R$ 24,00',
         img: 'assets/img/produto-classicos.png',
         ingredients: 'Leite integral, achocolatado Ovomaltine®, café solúvel, bicarbonato de sódio, açúcar refinado.',
         portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
@@ -49,6 +51,7 @@ const PRODUCT_CATEGORIES = {
       },
       {
         name: 'Alpino',
+        price: 'R$ 24,00',
         img: 'assets/img/produto-classicos.png',
         ingredients: 'Leite integral, achocolatado Alpino®, café solúvel, bicarbonato de sódio, açúcar refinado.',
         portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
@@ -76,6 +79,7 @@ const PRODUCT_CATEGORIES = {
     flavors: [
       {
         name: 'Tradicional (sem adição de açúcar)',
+        price: 'R$ 28,00',
         img: 'assets/img/produto-especiais.png',
         ingredients: 'Leite integral, alfarroba em pó, cacau em pó, café solúvel, bicarbonato de sódio, canela.',
         portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
@@ -100,6 +104,7 @@ const PRODUCT_CATEGORIES = {
       },
       {
         name: 'Whey Protein',
+        price: 'R$ 28,00',
         img: 'assets/img/produto-especiais.png',
         ingredients: 'Leite integral, proteína concentrada do soro do leite, cacau em pó, amido de milho, alfarroba em pó, espessante carboximetilcelulose, sal, café solúvel, bicarbonato de sódio.',
         portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
@@ -122,6 +127,7 @@ const PRODUCT_CATEGORIES = {
       },
       {
         name: 'Zero Lactose',
+        price: 'R$ 28,00',
         img: 'assets/img/produto-especiais.png',
         ingredients: 'Leite integral, enzima lactase, emulsificante lecitina, cacau em pó, amido de milho, espessante carboximetilcelulose sódica, sal, café solúvel, bicarbonato de sódio, canela, açúcar refinado.',
         portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
@@ -153,6 +159,7 @@ const PRODUCT_CATEGORIES = {
     flavors: [
       {
         name: 'Chocolate Quente',
+        price: 'R$ 24,00',
         img: 'assets/img/produto-chocolate.png',
         ingredients: 'Cacau, açúcar refinado, amido de milho, espessante carboximetilcelulose sódica e sal.',
         portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
@@ -237,6 +244,7 @@ const PRODUCT_CATEGORIES = {
         <button type="button" class="flavor-item__toggle" aria-expanded="false" aria-controls="${panelId}">
           <img src="${flavor.img}" alt="" class="flavor-item__thumb" loading="lazy">
           <span class="flavor-item__name">${flavor.name}</span>
+          ${flavor.price ? `<span class="flavor-item__price">${flavor.price}</span>` : ''}
           <span class="flavor-item__chevron" aria-hidden="true">⌄</span>
         </button>
         <div class="flavor-item__panel" id="${panelId}" hidden>

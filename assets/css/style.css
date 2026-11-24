@@ -1554,6 +1554,12 @@ body.modal-open {
   color: var(--color-brown-900);
 }
 
+.flavor-item__price {
+  font-weight: 700;
+  color: var(--color-brown-800);
+  white-space: nowrap;
+}
+
 .flavor-item__chevron {
   color: var(--color-brown-600);
   transition: transform 0.2s var(--ease);
