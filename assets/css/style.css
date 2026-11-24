@@ -926,19 +926,19 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
    Lembrancinhas personalizadas
    ========================================================================== */
 .favors {
-  display: flex;
-  align-items: stretch;
-  max-width: var(--container-max);
-  margin-inline: auto;
   background: var(--color-cream-200);
-  overflow: hidden;
+  padding-block: clamp(3.5rem, 6vw, 6.5rem);
+}
+
+.favors__inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
 }
 
 .favors__content-wrap {
-  flex: 1 1 55%;
-  display: flex;
-  align-items: center;
-  padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem) var(--container-pad);
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .favors__content {
@@ -998,55 +998,45 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   margin-top: var(--space-8);
 }
 
-.favors__photo {
-  flex: 0 0 45%;
-  max-width: 45%;
-  min-height: clamp(22rem, 34vw, 29rem);
-  position: relative;
-  background: var(--color-brown-700);
+.favors__photo-card {
+  flex: 0 0 clamp(16rem, 24vw, 22rem);
+  width: clamp(16rem, 24vw, 22rem);
+  aspect-ratio: 4 / 3.3;
+  border-radius: var(--radius-lg);
+  background: var(--color-cream-300);
+  box-shadow: 0 14px 30px -24px rgba(43, 27, 18, 0.3);
   overflow: hidden;
 }
 
-.favors__photo img {
+.favors__photo-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 55%;
   display: block;
 }
 
 @media (max-width: 1024px) {
-  .favors__content-wrap {
-    flex-basis: 58%;
-    padding-right: clamp(1.75rem, 4vw, 3rem);
+  .favors__inner {
+    gap: clamp(2rem, 4vw, 3rem);
   }
 
-  .favors__photo {
-    flex-basis: 42%;
-    max-width: 42%;
+  .favors__photo-card {
+    flex-basis: clamp(13rem, 26vw, 16rem);
+    width: clamp(13rem, 26vw, 16rem);
   }
 }
 
 @media (max-width: 640px) {
-  .favors {
+  .favors__inner {
     flex-direction: column-reverse;
   }
 
-  .favors__photo {
+  .favors__photo-card {
     flex-basis: auto;
-    max-width: 100%;
     width: 100%;
-    min-height: 20rem;
-    height: 20rem;
-  }
-
-  .favors__photo img {
-    object-position: center 60%;
-  }
-
-  .favors__content-wrap {
-    padding: clamp(2.5rem, 6vw, 3.5rem) var(--container-pad);
-    justify-content: center;
+    max-width: 22rem;
+    aspect-ratio: 4 / 3;
   }
 
   .favors__content {
