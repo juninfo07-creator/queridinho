@@ -926,15 +926,10 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
    Lembrancinhas personalizadas
    ========================================================================== */
 .favors {
-  background: var(--color-cream-200);
-  overflow: hidden;
-}
-
-.favors__inner {
   display: flex;
   align-items: stretch;
-  max-width: var(--container-max);
-  margin-inline: auto;
+  background: var(--color-cream-200);
+  overflow: hidden;
 }
 
 .favors__content-wrap {
@@ -1031,7 +1026,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 }
 
 @media (max-width: 640px) {
-  .favors__inner {
+  .favors {
     flex-direction: column-reverse;
   }
 
