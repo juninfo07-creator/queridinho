@@ -1000,8 +1000,8 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 
 .favors__photo-card {
   position: relative;
-  flex: 0 0 clamp(16rem, 24vw, 22rem);
-  width: clamp(16rem, 24vw, 22rem);
+  flex: 0 0 clamp(26rem, 34vw, 38rem);
+  width: clamp(26rem, 34vw, 38rem);
   aspect-ratio: 4 / 3.3;
   border-radius: var(--radius-lg);
   background: var(--color-cream-300);
@@ -1066,8 +1066,8 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   }
 
   .favors__photo-card {
-    flex-basis: clamp(13rem, 26vw, 16rem);
-    width: clamp(13rem, 26vw, 16rem);
+    flex-basis: clamp(16rem, 32vw, 24rem);
+    width: clamp(16rem, 32vw, 24rem);
   }
 }
 
