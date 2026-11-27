@@ -8,7 +8,7 @@ const PRODUCT_CATEGORIES = {
         price: 'R$ 24,00',
         img: 'assets/img/produto-classicos.png',
         ingredients: 'Leite integral, cacau em pó, amido de milho, espessante carboximetilcelulose sódica, sal, café solúvel, bicarbonato de sódio, canela, açúcar refinado.',
-        portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
+        portionInfo: 'Porções por embalagem: 40 · Porção: 25g (1 colher de sopa)',
         rows: [
           ['Valor energético (kcal)', '107', '107', '6%'],
           ['Carboidratos (g)', '13', '13', '4%'],
@@ -25,13 +25,14 @@ const PRODUCT_CATEGORIES = {
           ['Zinco (mg)', '1,2', '1,2', '17%'],
         ],
         allergens: 'Contém lactose e derivados de soja.',
+        notes: ['Não contém glúten.'],
       },
       {
         name: 'Ovomaltine',
         price: 'R$ 24,00',
         img: 'assets/img/produto-classicos.png',
         ingredients: 'Leite integral, achocolatado Ovomaltine®, café solúvel, bicarbonato de sódio, açúcar refinado.',
-        portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
+        portionInfo: 'Porções por embalagem: 40 · Porção: 25g (1 colher de sopa)',
         rows: [
           ['Valor energético (kcal)', '108', '108', '6%'],
           ['Carboidratos (g)', '14', '14', '4%'],
@@ -47,14 +48,14 @@ const PRODUCT_CATEGORIES = {
           ['Ferro (mg)', '2,2', '2,2', '16%'],
           ['Zinco (mg)', '1,1', '1,1', '16%'],
         ],
-        allergens: 'Contém glúten, lactose e derivados de soja.',
+        allergens: 'Contém glúten, cevada, lactose e derivados de soja.',
       },
       {
         name: 'Alpino',
         price: 'R$ 24,00',
         img: 'assets/img/produto-classicos.png',
         ingredients: 'Leite integral, achocolatado Alpino®, café solúvel, bicarbonato de sódio, açúcar refinado.',
-        portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
+        portionInfo: 'Porções por embalagem: 40 · Porção: 25g (1 colher de sopa)',
         rows: [
           ['Valor energético (kcal)', '103', '103', '6%'],
           ['Carboidratos (g)', '14', '14', '4%'],
@@ -82,7 +83,7 @@ const PRODUCT_CATEGORIES = {
         price: 'R$ 28,00',
         img: 'assets/img/produto-especiais.png',
         ingredients: 'Leite integral, alfarroba em pó, cacau em pó, café solúvel, bicarbonato de sódio, canela.',
-        portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
+        portionInfo: 'Porções por embalagem: 40 · Porção: 25g (1 colher de sopa)',
         rows: [
           ['Valor energético (kcal)', '107', '107', '6%'],
           ['Carboidratos (g)', '10', '10', '3%'],
@@ -100,14 +101,14 @@ const PRODUCT_CATEGORIES = {
           ['Zinco (mg)', '2,1', '2,1', '31%'],
         ],
         allergens: 'Contém lactose e derivados de soja.',
-        notes: ['Diabéticos: contém sacarose, frutose e glicose natural em alguns ingredientes.'],
+        notes: ['Não contém glúten.', 'Diabéticos: contém sacarose, frutose e glicose natural em alguns ingredientes.'],
       },
       {
         name: 'Whey Protein',
         price: 'R$ 28,00',
         img: 'assets/img/produto-especiais.png',
         ingredients: 'Leite integral, proteína concentrada do soro do leite, cacau em pó, amido de milho, alfarroba em pó, espessante carboximetilcelulose, sal, café solúvel, bicarbonato de sódio.',
-        portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
+        portionInfo: 'Porções por embalagem: 40 · Porção: 25g (1 colher de sopa)',
         rows: [
           ['Valor energético (kcal)', '112', '112', '4%'],
           ['Carboidratos (g)', '9', '9', '3%'],
@@ -124,13 +125,14 @@ const PRODUCT_CATEGORIES = {
           ['Zinco (mg)', '1', '1', '20%'],
         ],
         allergens: 'Contém lactose e derivados de soja. Pode conter ovo.',
+        notes: ['Não contém glúten.'],
       },
       {
         name: 'Zero Lactose',
         price: 'R$ 28,00',
         img: 'assets/img/produto-especiais.png',
         ingredients: 'Leite integral, enzima lactase, emulsificante lecitina, cacau em pó, amido de milho, espessante carboximetilcelulose sódica, sal, café solúvel, bicarbonato de sódio, canela, açúcar refinado.',
-        portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
+        portionInfo: 'Porções por embalagem: 40 · Porção: 25g (1 colher de sopa)',
         rows: [
           ['Valor energético (kcal)', '103', '103', '5%'],
           ['Carboidratos (g)', '13', '13', '4%'],
@@ -162,7 +164,7 @@ const PRODUCT_CATEGORIES = {
         price: 'R$ 24,00',
         img: 'assets/img/produto-chocolate.png',
         ingredients: 'Cacau, açúcar refinado, amido de milho, espessante carboximetilcelulose sódica e sal.',
-        portionInfo: 'Porções por embalagem: 8 · Porção: 25g (1 colher de sopa)',
+        portionInfo: 'Porções por embalagem: 40 · Porção: 25g (1 colher de sopa)',
         rows: [
           ['Valor energético (kcal)', '152', '93', '5%'],
           ['Carboidratos (g)', '25', '20', '6%'],
